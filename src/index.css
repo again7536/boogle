@@ -11,3 +11,7 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.App { text-align: center; }
+.App .logo {width:320px; height:120px;}
+.App header {margin-top:25vh; display:flex; flex-direction:column; justify-content:center; align-items:center;}
