@@ -8,7 +8,7 @@ function SearchItem(props) {
   return (
     <article>
       <h2>{props.title}</h2>
-      <h4>{props.url}</h4>
+      <a href={props.url}>{props.url}</a>
       <p>{props.desc}</p>
     </article>
   );
@@ -21,11 +21,15 @@ function SearchContainer() {
   function searchGoogle() {
     google(keyword, (res)=> {
       let items = [];
-      for(const r of res)
-        items.push(<SearchItem title={r.title} url={r.url} desc={r.description} ></SearchItem>);
+      let len = res.length;
+      for(var i = 0; i < len; i++) {
+        const r = res[i];
+        items.push(<SearchItem title={r.title} url={r.url} desc={r.description} key={i} ></SearchItem>);
+      }
       setResult(items);
     });
   };
+  
 
   return (
     <div className='search-form'>
@@ -45,9 +49,7 @@ function App() {
         <SearchContainer />
       </header>
     </div>
-    <div id="result">
-
-    </div>
+    <div id="result"></div>
     </>
   );
 };
